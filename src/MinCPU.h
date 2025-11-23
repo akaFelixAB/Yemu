@@ -7,7 +7,7 @@
 // Configure the memory size here
 #define MEM_SIZE 16
 
-// Configure the number of registers here
+// Configure the number of registers, includes PC
 #define REG_NUMBER 5
 
 // Configure the CPU bit width here (allowed: 8, 16, 32, 64)

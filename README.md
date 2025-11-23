@@ -1,11 +1,43 @@
-[Yemu]
 # Yemu
 
 A mininalistic cpu emulator written in C++20.
 
+## Features
+
+### CPU Specifications
+- 4 General Purpose Registers: R0(RA), R1, R2, R3
+- 16 Bytes of Memory
+- 8-bit Data Width
+- Each instruction is 4 bits long
+
+### Operations Supported
+- `LOAD [addr]`: Load data from memory to register `RA`
+- `STORE [addr]`: Store data from register `RA` to memory
+- `ADD [rt][rs]`: Add the value of register `rs` to `rt`
+- `MOV [rt][rs]`: Move the value of register `rs` to `rt`
+- `HALT`: Stop execution
+
+### Instructions Format
+| Instruction  | Format    |
+|--------------|-----------|
+| `LOAD`       | 1110 AAAA |
+| `STORE`      | 1111 AAAA |
+| `ADD`        | 0001 RTRS |
+| `MOV`        | 0000 RTRS |
+| `HALT`       | 0100 0000 |
+Where `AAAA` is a 4-bit memory address and `RT` `RS` are 2-bit register specifiers.
+
+### Examples
+
+```binary
+11100000    # LOAD from address 0
+00000100    # MOV R0 to R1
+11110001    # STORE to address 1
+01000000    # HALT
+```
+
 ## Project Structure
 ```
-Yemu/
 ├── src/            # Main program source
 │   ├── MinCPU.h    # Minimal CPU header
 │   ├── MinCPU.cpp  # Minimal CPU implementation
@@ -61,11 +93,6 @@ cd build
 ctest
 ```
 
-## Configuration Notes
+## License
 
-- `CMakeLists.txt` configures the project to use C++20 and is tested with g++. It also supports Ninja as an optional generator.
-- Enable or disable tests with the `YEMU_ENABLE_TESTS` CMake option.
-- Catch2 is the default test framework; you can swap or add other frameworks (for example, Google Test) if desired.
-
-If you'd like, I can also add a short example showing how to assemble a simple program binary or provide CI instructions.
-# Yemu
+This project is licensed under the MIT License - see the LICENSE file for details.
