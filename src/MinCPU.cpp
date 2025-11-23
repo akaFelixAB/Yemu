@@ -21,7 +21,7 @@ MinCPU::MinCPU(bits memory_init[MEM_SIZE]) : MinCPU()
 
 void MinCPU::print_state(int cycle_count) const
 {
-    std::cout << '\n' << "Cycle: " << cycle_count << "\n"
+    std::cout << "Cycle: " << cycle_count << "\n"
               << "PC: " << std::format("{:08b}", pc) << "\n"
               << "RA: " << std::format("{:08b}", registers.RA) << "\n"
               << "R1: " << std::format("{:08b}", registers.R1) << "\n"
@@ -41,8 +41,8 @@ void MinCPU::run()
     {
         bits instruction = memory[pc];
         bits opcode = (instruction >> (CPU_BIT_WIDTH - 4)) & 0b1111; // Extract the top 4 bits as opcode
-        std::cout << "Executing instruction: " << std::format("{:08b}", instruction) << "\n"; // DEBUG
         print_state(cycle_count++);
+
         switch (opcode)
         {
             case MOV:
@@ -61,6 +61,7 @@ void MinCPU::run()
                 // Handle unknown opcode (could raise an error or ignore)
                 break;
         }
+        std::cout << "Executing instruction: " << std::format("{:08b}", instruction) << "\n"; // DEBUG
         pc++; // Move to the next instruction
     }
 }
