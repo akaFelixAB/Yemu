@@ -18,6 +18,7 @@ A mininalistic cpu emulator written in C++20.
 - `HALT`: Stop execution
 
 ### Instructions Format
+
 | Instruction  | Format    |
 |--------------|-----------|
 | `LOAD`       | 1110 AAAA |
@@ -25,6 +26,7 @@ A mininalistic cpu emulator written in C++20.
 | `ADD`        | 0001 RTRS |
 | `MOV`        | 0000 RTRS |
 | `HALT`       | 0100 0000 |
+
 Where `AAAA` is a 4-bit memory address and `RT` `RS` are 2-bit register specifiers.
 
 ### Examples
