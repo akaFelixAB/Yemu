@@ -64,6 +64,8 @@ void MinCPU::run()
         std::cout << "Executing instruction: " << std::format("{:08b}", instruction) << "\n"; // DEBUG
         pc++; // Move to the next instruction
     }
+    std::cout << '\n' << "Final state: " << "\n"; // DEBUG
+    print_state(cycle_count);
 }
 
 bool MinCPU::is_halt(bits instruction) const
